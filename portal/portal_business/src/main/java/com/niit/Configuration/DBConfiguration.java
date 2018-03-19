@@ -12,8 +12,11 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.model.BlogComment;
 import com.niit.model.BlogPost;
 import com.niit.model.BlogPostLikes;
+import com.niit.model.Chat;
+import com.niit.model.Friend;
 import com.niit.model.Job;
 import com.niit.model.Notification;
 import com.niit.model.ProfilePicture;
@@ -36,7 +39,7 @@ public class DBConfiguration {
 		hibernateProperties.setProperty("hibernate.format_sql", "true");
 		hibernateProperties.setProperty("hibernate.use_sql_commnets", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,BlogPostLikes.class,Notification.class,ProfilePicture.class};
+		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,BlogPostLikes.class,BlogComment.class,Notification.class,ProfilePicture.class,Friend.class,Chat.class};
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	@Bean
