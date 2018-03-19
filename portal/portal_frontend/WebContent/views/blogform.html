@@ -1,30 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Blog Post</title>
+<style>
+body  {
+    background-image: url("resources/images/blog.jpg");
+	background-size: 1000px 600px;
+    background-repeat: no-repeat;
+}
+
+</style>
+<script type="text/javascript">
+$('#contact-form').bootstrapValidator({
+//  live: 'disabled',
+  message: 'This value is not valid',
+  feedbackIcons: {
+      valid: 'glyphicon glyphicon-ok',
+      invalid: 'glyphicon glyphicon-remove',
+      validating: 'glyphicon glyphicon-refresh'
+  },
+  fields: {
+      Name: {
+          validators: {
+              notEmpty: {
+                  message: 'The Name is required and cannot be empty'
+              }
+          }
+      },
+      email: {
+          validators: {
+              notEmpty: {
+                  message: 'The email address is required'
+              },
+              emailAddress: {
+                  message: 'The email address is not valid'
+              }
+          }
+      },
+      Message: {
+          validators: {
+              notEmpty: {
+                  message: 'The Message is required and cannot be empty'
+              }
+          }
+      }
+  }
+});
+</script>
+<style type="text/css">
+.contact-form{ margin-top:15px;}
+.contact-form .textarea{ min-height:220px; resize:none;}
+.form-control{ box-shadow:none; border-color:#eee; height:49px;}
+.form-control:focus{ box-shadow:none; border-color:#00b09c;}
+.form-control-feedback{ line-height:50px;}
+.main-btn{ background:#00b09c; border-color:#00b09c; color:#fff;}
+.main-btn:hover{ background:#00a491;color:#fff;}
+.form-control-feedback {
+line-height: 50px;
+top: 0px;
+}
+</style>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+</head>
+<body>
 <span class="error" ng-show="error.message"> {{error.message}}<!-- Unable to insert blogpost details  -->
 </span>
-<div class="container">
-	<form>
+{{message}}
+<form>
 
-		<div class="form-group">
-			<label>Blog Title</label> <input type="text"
-				ng-model="blog.blogTitle" class="form-control">
-		</div>
-		<div class="form-group">
-			<label>Content</label>
+<div class="container">
+	<div class="row">
+		<form role="form" id="contact-form" class="contact-form">
+                    <div class="row">
+                		<div class="col-md-6">
+                  		<div class="form-group">
+                  		<label>Blog Title</label> <input type="text" ng-model="blog.blogTitle" class="form-control" autocomplete="off" placeholder="Title">
+                  		</div>
+                  	</div>
+                    	
+                  	</div>
+                  	<div class="row">
+                  		<div class="col-md-12">
+                  		<div class="form-group">
+                  		<label>Content</label>
 			<textarea rows="4" cols="15" ng-model="blog.blogContent"
-				class="form-control"></textarea>
+				class="form-control" placeholder="description"></textarea>
 			<button ng-click="addBold(blog)">Bold</button>
 			<button ng-click="addParagraph(blog)">Paragraph</button>
 			<button ng-click="addBreak(blog)">Break</button>
-			Add Heading<select ng-model="heading"><option
-					value="<h1></h1>" ng-click="addHeading(blog)">h1
+			Add Heading<select ng-model="heading">
+				<option value="<h1></h1>" ng-click="addHeading(blog)">h1
 				<option value="<h2></h2>" ng-click="addHeading(blog)">h2
 				<option value="<h3></h3>" ng-click="addHeading(blog)">h3
 				<option value="<h4></h4>" ng-click="addHeading(blog)">h4
 				<option value="<h5></h5>" ng-click="addHeading(blog)">h5
 				<option value="<h6></h6>" ng-click="addHeading(blog)">h6
 				<option></select>
-		</div>
-
-		<input type="submit" ng-click="addBlog(blog)" value="Add Blog">
-	</form>
-
+                           
+                  		</div>
+                  	</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-12">
+                  <button type="submit" class="btn main-btn pull-right" ng-click="addBlog(blog)">Add Blog</button>
+                  </div>
+                  </div>
+                </form>
+	</div>
 </div>
+
+</form>
+</body>
+</html>
+
+
+
+
+
+		
+		
+
+		

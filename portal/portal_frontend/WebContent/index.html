@@ -2,19 +2,33 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Index</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
-	<link rel="stylesheet" href="resources/css/login.css">
+	<link rel="stylesheet" href="resources/css/notification.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	type="text/javascript"></script>
 	<link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 	rel="stylesheet" />
+	<style>
+body{
+background-image: url("resources/images/homebg.jpg");
+background-size:1000px 600px;
+background-repeat:no-repeat;
+}
+#nav {
+    position: relative;
+    left: -90px;
+background-color: #336699; 
+color: #FFFFFF; 
+
+}
+</style>
 	
 </head>
 <body ng-app="app">
@@ -30,16 +44,13 @@
         <span class="icon-bar"></span>
       </button>
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/"><img src="resources/images/niit.jpg" width="130" height="30" alt="NIIT"></a>
+                    <a class="navbar-brand" href="/"><img src="resources/images/portal.jpg" width="130" height="30" alt="portal logo"></a>
                 </div>
 <div class="collapse navbar-collapse" id="collapse-example">
                 <ul class="nav navbar-nav ">
-                 <li><a href="#profilepic" ng-show="currentUser.username">
-                    <img src="http://localhost:8080/collaboration_middleware/getprofilepic/{{loggedInUser.email}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">
-                    </a></li>
 <li><a href="#/register" ng-hide="loggedInUser.firstname">Sign Up</a></li>
 <li><a href="#/login" ng-hide="loggedInUser.firstname">Sign In</a></li>
-<li><a href="" ng-show="loggedInUser.firstname">Welcome {{loggedInUser.firstname}}&nbsp; {{loggedInUser.lastname}}</a></li>
+<li><a href="#/home" ng-show="loggedInUser.firstname">Welcome {{loggedInUser.firstname}}&nbsp; {{loggedInUser.lastname}}</a></li>
 
 
 <li class="dropdown"><a href="" class="dropdown-toggle"
@@ -49,12 +60,32 @@
 							<li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a></li>
 							<li><a href="#/getalljobs">All Jobs</a></li>
 						</ul></li>
+<li class="dropdown"><a href="" class="dropdown-toggle"
+						data-toggle="dropdown" ng-show="loggedInUser.firstname">Blog<b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/addblog">Add Blog</a></li>
+							<li><a href="#/getblogs">Get Blogs</a></li>
+						</ul></li>	
+<li class="dropdown"><a href="" class="dropdown-toggle"
+						data-toggle="dropdown" ng-show="loggedInUser.firstname">Friend<b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#/suggestedusers">Suggested Users</a></li>
+							<li><a href="#/pendingrequests">Pending Requests</a></li>
+							<li><a href="#/friends">Friends</a></li>
+						</ul></li>												
+
+<li><a href="#/chat" ng-show="loggedInUser.firstname">chat </a></li>
+<li><a href="#/editprofile" ng-show="loggedInUser.firstname">My Profile</a></li>
+<li><a href="#/profilepic" ng-show="loggedInUser.firstname><img alt="upload profile picture" width="40px" height="40px" src="http://localhost:9090/portal_middleware/getimage/{{loggedInUser.email}}" class="img-rounded"></a></li>
 <li class="dropdown" >
 <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="loggedInUser.firstname"> 
 <span class="glyphicon glyphicon-globe" > 
   <span class="rw-number-notification" ng-if="notificationsCount>0">{{notificationsCount}}</span></span></a>
-   <ul class="dropdown-menu" >
-  <span class="dropdown-content">
+   
+   <ul class="dropup-menu" >
+  <span class="dropup-content">
    <li ng-repeat="n in notifications">
      <a href="#/getnotification/{{n.id}}"> Blog titled <b>{{n.blogTitle}}</b> approval status is updated</a>
      <hr>
@@ -62,13 +93,18 @@
    </span>
    </ul>
 </li>
-
-
-
-
-<li><a href="#/editprofile" ng-show="loggedInUser.firstname">My Profile</a></li>
 <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname">logout</a></li>
-
+<div class="btn-group dropup">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Social Medias <span class="caret caret-up"></span>
+                </button>
+                <ul class="dropdown-menu drop-up" role="menu">
+                    <li><a href="https://en-gb.facebook.com/login/">Facebook</a></li>
+                    <li><a href="https://twitter.com/login?lang=en">Twitter</a></li>
+                    <li><a href="https://webmail.au.syrahost.com/login/">Mail Us</a></li>
+                    
+                </ul>
+            </div>
 </ul>
 
 </div>
@@ -89,6 +125,24 @@
 
 <script type="text/javascript" src="controllers/jobcontroller.js"></script>
 <script type="text/javascript" src="services/jobservice.js"></script>
+
+<script type="text/javascript" src="controllers/blogpostcontroller.js"></script>
+<script type="text/javascript" src="services/blogpostservice.js"></script>
+
+<script type="text/javascript" src="controllers/blogpostdetailscontroller.js"></script>
+<script type="text/javascript" src="services/blogpostservice.js"></script>
+
+<script type="text/javascript" src="controllers/notificationcontroller.js"></script>
+<script type="text/javascript" src="services/notificationservice.js"></script>
+
+<script type="text/javascript" src="controllers/friendcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
+
+ <script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+	<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
 </html>
 
 

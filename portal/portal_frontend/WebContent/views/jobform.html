@@ -1,42 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Job Post</title>
+
+<style>body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    max-width: 630px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
+}
+
+
+</style>
+
+</head>
+<body>
 <span class="error" ng-show="error.message">
 {{error.message}}
 </span>
+{{message}}
 <div class="container">
-<form>
-<div class="form-group">
-<label>Enter job title</label>
-<input type="text" ng-model="job.jobTitle" class="form-control">
+            <form class="form-horizontal" role="form">
+                <h3><center>Job Post Form</center></h3>
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Job Title</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="name" placeholder="Enter Job Title here"  ng-model="job.jobTitle" class="form-control" autofocus>
+                      </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-3 control-label">Job Description</label>
+                    <div class="col-sm-9">
+                        <textarea placeholder="Enter JobDescription Here.." rows="3" ng-model="job.jobDescription" class="form-control"></textarea>
+                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Salary</label>
+                    <div class="col-sm-9">
+                        <input type="text" id=""  placeholder="Enter Salary here"  ng-model="job.salary" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Job Location</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="password" placeholder="Enter joblocation here" ng-model="job.location" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                     <label for="firstName" class="col-sm-3 control-label">YearsOfExperience</label>
+                    <div class="col-sm-9">
+                       <input type="text"  id="yearsofexperience" placeholder="Enter years ofexperience" ng-model="job.yrsOfExp" class="form-control">
+                      </div>
+                </div>
+                
+                <div class="form-group">
+                     <label for="firstName" class="col-sm-3 control-label">Skills Required</label>
+                    <div class="col-sm-9">
+                       <textarea placeholder="Enter skills Here.." rows="3" ng-model="job.skillsRequired" class="form-control"></textarea>
+                      </div>
+                </div>
+                
+                
+             
+    
+                
+            <div class="row">
+  <div class="col-sm-12">
+    <div class="text-center">
+      <button class="btn btn-primary" id="singlebutton" ng-click="addJob()">Post</button>
+    </div>
+  </div>
 </div>
-
-<div class="form-group">
-<label>Enter Job Description</label>
-<textarea ng-model="job.jobDescription" class="form-control"></textarea>
-</div>
-
-<div class="form-group">
-<label>Enter Salary</label>
-<input type="text" ng-model="job.salary" class="form-control">
-</div>
-
-<div class="form-group">
-<label>Enter Location</label>
-<input type="text" ng-model="job.location" class="form-control">
-</div>
-
-<div class="form-group">
-<label>Skills Required</label>
-<input type="text" ng-model="job.skillsRequired" class="form-control">
-</div>
-
-<div class="form-group">
-<label>Years of Experience</label>
-<input type="text" ng-model="job.yrsOfExp" class="form-control">
-</div>
-
-<div class="form-group">
-<input type="submit" ng-click="addJob()" value="Add Job">
-</div>
+            </form> <!-- /form -->
+        </div> <!-- ./container -->
+        {{message}}
+</body>
+</html>
 
 
-</form>
-</div>
+

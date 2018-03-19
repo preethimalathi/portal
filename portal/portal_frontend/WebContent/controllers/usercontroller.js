@@ -49,4 +49,13 @@ app.controller('UserController',function($scope,UserService,$rootScope,$location
 				$location.path('/login')
 		})
 	}
+	$rootScope.logout=function(){
+		UserService.logout().then(function(response){
+			$scope.message="Logout Successfully..."
+				$location.path('/login')
+		},function(response){
+			$scope.message="Please login .."
+				$location.path('/login')
+		})
+	}
 })

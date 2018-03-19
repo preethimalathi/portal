@@ -24,7 +24,7 @@ app.config(function($routeProvider){
 		controller:'JobController' //$scope.job
 	})
 	.when('/getalljobs',{//C to V
-		templateUrl:'views/jobslist.html',  //ng-repeat
+		templateUrl:'views/joblist.html',  //ng-repeat
 		controller:'JobController'// $scope.jobs
 	})
 	.when('/getjob/:id',{// C to V
@@ -43,6 +43,10 @@ app.config(function($routeProvider){
 		templateUrl:'views/blogpostdetail.html',
 		controller:'BlogPostDetailController'
 	})
+	.when('/getapprovalform/:id',{
+		templateUrl:'views/approvalform.html',
+		controller:'BlogPostDetailController'
+	})
 	.when('/getnotification/:id',{
 		templateUrl:'views/notificationdetails.html',
 		controller:'NotificationController'
@@ -50,10 +54,27 @@ app.config(function($routeProvider){
 
     .when('/home',{
 		templateUrl:'views/home.html',
-		controller:'NotificationController'
+		controller:'HomeController'
 	})
 	.when('/profilepic',{
 		templateUrl:'views/uploadprofilepic.html'
+	
+	})
+	.when('/suggestedusers',{
+		templateUrl:'views/suggestedusers.html',
+		controller:'FriendController'
+	})
+	.when('/pendingrequests',{
+		templateUrl:'views/pendingrequests.html',
+		controller:'FriendController'
+	})
+	.when('/friends',{
+		templateUrl:'views/friendslist.html',
+		controller:'FriendController'
+	})
+	.when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatCtrl'
 	})
 	.otherwise({
 		templateUrl:'views/login.html',

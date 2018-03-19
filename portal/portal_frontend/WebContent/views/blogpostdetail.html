@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Blog</title>
+<style>
+body  {
+    background-image: url("resources/images/blog1.jpg");
+	background-size: 1000px 600px;
+    background-repeat: no-repeat;
+}
+
+</style>
+</head>
+<body>
 <div class="container">
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -10,12 +25,10 @@
 		</div>
 	</div>
 </div>
-<!--  $scope.isLiked = true, glyphicon in blue -->
-<!-- $scope.isLiked=false, glyphicono in black -->
+
 <div>
-<div ng-show="isLiked"><!-- result of the query select * from blogpostlikes where post_id=? and u_email=? -->
+<div ng-show="isLiked">
 <a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(blogPost.id)"></span></a>
-<!-- delete data from blogpostlikes and decrement the number of likes -->
 </div>
 <div ng-show="!isLiked">
 <a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(blogPost.id)"></span></a>
@@ -23,10 +36,21 @@
 </div>
 {{blogPost.likes}} likes
 </div>
-<!--  updateLikes(735) when you click glyphicon , same function for both blue and black -->
+
+
+<div>
+<textarea rows="3" cols="9" ng-model="commentTxt"></textarea>
+<button type="button" class="button button-default" ng-click="addComment(commentTxt,blogPost)">Add Comment</button>
+<ul style="list-style:none;">
+<li ng-repeat="blogComment in blogComments | orderBy:'blogComment.commentedOn'">
+<b>{{blogComment.commentTxt}}</b> &nbsp;
+<b>Commented By: </b>{{blogComment.commentedBy.email}}&nbsp;
+<b>Commented On: </b>{{blogComment.commentedOn | date:'medium'}}<br>
+</li>
+</ul>
+</div>
 
 
 
-
-
-
+</body>
+</html>

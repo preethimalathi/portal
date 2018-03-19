@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Blog List</title>
+<style>
+body  {
+    background-image: url("resources/images/blog.jpg");
+	background-size: 1000px 600px;
+    background-repeat: no-repeat;
+}
+
+</style>
+</head>
+<body>
 <div ng-show="loggedInUser.role=='ADMIN'">
 <span ng-if="blogsWaitingForApproval.length==0">No Blogs waiting for approval</span>
 	<div class="container" ng-hide="blogsWaitingForApproval.length==0">
@@ -36,4 +51,5 @@
 
 	</div>
 </div>
-
+</body>
+</html>
